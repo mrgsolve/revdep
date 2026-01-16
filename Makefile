@@ -1,0 +1,2 @@
+check:
+	Rscript packages.R
