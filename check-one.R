@@ -8,19 +8,21 @@ if(!require("revdepcheck", quietly = TRUE)) {
   pak::pkg_install("r-lib/revdepcheck", lib = "libs")
 }
 
+loc <- "~/git/m4solve"
+
 library(revdepcheck)
 packages <- c("campsis", "coveffectsplot", "tci", "PopED", "mapbayr", "vachette")
 only <- "campsis"
 remove <- setdiff(packages, only)
 
-revdepcheck::revdep_add("~/git/m4solve/", packages = only)
+revdepcheck::revdep_add(loc, packages = only)
 
 for(package in remove) {
-  revdepcheck::revdep_rm("~/git/m4solve/", packages = package)
+  revdepcheck::revdep_rm(loc, packages = package)
 }
 
 revdep_check(
-  "~/git/m4solve/", 
+  loc, 
   num_workers = 8, 
   timeout = as.difftime(20, units = "mins"), 
   quiet = FALSE

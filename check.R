@@ -8,9 +8,14 @@ if(!require("revdepcheck", quietly = TRUE)) {
   pak::pkg_install("r-lib/revdepcheck", lib = "libs")
 }
 
+loc <- "~/git/m4solve"
+
 library(revdepcheck)
 revdep_check(
-  "~/git/m4solve/", 
+  loc, 
   num_workers = 8, 
   timeout = as.difftime(30, units = "mins")
 )
+
+revdep_summary(loc)
+
