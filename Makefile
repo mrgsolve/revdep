@@ -1,2 +1,4 @@
 check:
-	Rscript packages.R
+	Rscript check.R
+check-one: 
+	Rscript check-one.R
